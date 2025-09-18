@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROV Operations Dashboard</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>ROV Operations Dashboard</h1>
+      <p class="subtitle">Real-time overview of remotely operated vehicle metrics</p>
+    </header>
+
+    <main class="dashboard">
+      <section class="card status" aria-labelledby="status-heading">
+        <h2 id="status-heading">Mission Status</h2>
+        <div class="status-grid">
+          <article class="status-item">
+            <h3>Depth</h3>
+            <p><span id="depth-value">0</span> m</p>
+          </article>
+          <article class="status-item">
+            <h3>Heading</h3>
+            <p><span id="heading-value">0</span>°</p>
+          </article>
+          <article class="status-item">
+            <h3>Speed</h3>
+            <p><span id="speed-value">0</span> knots</p>
+          </article>
+          <article class="status-item">
+            <h3>Battery</h3>
+            <p><span id="battery-value">0</span>%</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="card chart" aria-labelledby="depth-chart-heading">
+        <div class="card-header">
+          <h2 id="depth-chart-heading">Depth Profile</h2>
+          <p class="card-subtitle">Depth readings for the last 10 minutes</p>
+        </div>
+        <canvas id="depth-chart" height="220"></canvas>
+      </section>
+
+      <section class="card chart" aria-labelledby="temperature-chart-heading">
+        <div class="card-header">
+          <h2 id="temperature-chart-heading">Temperature &amp; Pressure</h2>
+          <p class="card-subtitle">Environmental sensors trend</p>
+        </div>
+        <canvas id="environment-chart" height="220"></canvas>
+      </section>
+
+      <section class="card table" aria-labelledby="telemetry-heading">
+        <div class="card-header">
+          <h2 id="telemetry-heading">Telemetry Log</h2>
+          <p class="card-subtitle">Latest transmitted telemetry packets</p>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Timestamp</th>
+                <th scope="col">Depth (m)</th>
+                <th scope="col">Heading (°)</th>
+                <th scope="col">Speed (kn)</th>
+                <th scope="col">Battery (%)</th>
+              </tr>
+            </thead>
+            <tbody id="telemetry-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <p>Last updated: <span id="last-updated">--</span></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
